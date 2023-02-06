@@ -1,0 +1,44 @@
+<app-navbar-ad></app-navbar-ad>
+<div class="d-flex align-items-center justify-content-center pt-10">
+    <form class="p-2 mt-5 shadow rounded-2" style="width: 70%;">
+        <div class="col-md-12 text-center">
+            <img class="mb-3" src="../../../assets/d annonceur.png" width="150" height="150" alt="">
+        </div>
+        <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()" name="form" [formGroup]="form" class="row g-3 needs-validation">        <!-- Campagne name input -->
+
+            <!-- Ad name input -->
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                <div class="input-group-text">Nom de l'Ad: </div>
+                </div>
+                <input type="text" class="form-control" id="Name" name="name" formControlName="name" placeholder="Enter le nom de l'Ad" [ngClass]="{ 'is-invalid': (form.controls.name.errors) || (!form.controls.name.pristine && form.controls.name.invalid) }">
+                <div class="invalid-feedback"
+          *ngIf="(form.controls.name.errors) || (!form.controls.name.pristine && form.controls.name.invalid)">
+          <div *ngIf="form.controls.name.errors?.['required']">Username is required</div>
+
+        </div>
+            </div>
+
+            <!-- Ad text input -->
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                <div class="input-group-text">Commentaire sur l'ad: </div>
+                </div>
+                <input type="text" class="form-control" id="Tags" name="description" formControlName="description" placeholder="Enter le commentaire">
+            </div>
+            <br>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="file"  name="file" formControlName="file" (change)="onFileChange($event)" />
+                <label class="custom-file-label" for="file">Choose file</label>
+                <!-- <div *ngIf="form.controls.file.touched && form.controls.file.invalid" class="alert alert-danger">
+                    <div *ngIf="form.controls.file.errors?.[required]">File is required.</div>
+                </div> -->
+            </div>
+            <br>
+            <!-- Submit button -->
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary btn-block mb-4">+ Ajouter l'ad</button>
+            </div>
+        </form>
+    </form>
+</div>

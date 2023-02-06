@@ -1,0 +1,48 @@
+<nav class="navbar navbar-light bg-light justify-content-between px-5">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="redirectTochoose()">Choose</button>
+</nav>
+<div class="d-flex align-items-center justify-content-center pt-10">
+  <form class="p-2 mt-5 shadow rounded-2">
+      <div class="col-md-12 text-center">
+          <img class="mb-3" src="../../../../assets/d annonceur.png" width="200" height="200" alt="">
+      </div>
+  
+      <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()" name="form" [formGroup]="form" class="row g-3 needs-validation">
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <label class="form-label mt-2" for="mail">Email address</label>
+          <input type="email" id="mail" class="form-control mt-2" placeholder="Enter a valid email address" name="mail" formControlName="mail"
+                 [ngClass]="{ 'is-invalid': (isFormSubmitted && form.controls.mail.errors) || (!form.controls.mail.pristine && form.controls.mail.invalid) }" />
+
+            <div class="invalid-feedback"
+                 *ngIf="(isFormSubmitted && form.controls.mail.errors) || (!form.controls.mail.pristine && form.controls.mail.invalid)">
+                <div *ngIf="form.controls.mail.errors?.['required']">Email is required</div>
+                <div *ngIf="form.controls.mail.errors?.['pattern']">Enter valid email</div>
+            </div>
+        </div>
+      
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <label class="form-label mt-2" for="password">Password</label>
+          <input type="password" id="password" class="form-control mt-2" placeholder="Enter password" name="password" formControlName="password"
+                 [ngClass]="{ 'is-invalid': (isFormSubmitted && form.controls.password.errors) || (!form.controls.password.pristine && form.controls.password.invalid) }" />
+
+            <div class="invalid-feedback"
+                 *ngIf="(isFormSubmitted && form.controls.password.errors) || (!form.controls.password.pristine && form.controls.password.invalid)">
+                <div *ngIf="form.controls.password.errors?.['required']">Password is required</div>
+                <div *ngIf="form.controls.password.errors?.['minlength']">Minimum 8 characters required</div>
+            </div>
+        </div>
+        <!-- 2 column grid layout for inline styling -->
+      
+        <!-- Submit button -->
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+        </div>
+        <!-- Register buttons -->
+        <div class="text-center">
+          <p>Not a member? <a href="/advertiser-register">Register</a></p>
+        </div>
+      </form>  
+  </form>
+  </div>

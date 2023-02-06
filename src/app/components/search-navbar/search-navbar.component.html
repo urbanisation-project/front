@@ -1,0 +1,28 @@
+<nav class="navbar navbar-light bg-light justify-content-between px-5">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="redirectToMyPlaylists()">Mes playlist ⏯</button>
+    <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()" name="form" [formGroup]="form">
+        <div class="input-group rounded">
+            <input type="search" class="form-control rounded" name="query" formControlName="query" placeholder="Search"
+                aria-label="Search" aria-describedby="search-addon" />
+            <span class="input-group-text border-0" id="search-addon">
+                <button type="submit" class="btn btn-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
+                        </path>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox1" value="true" name="isYouTube" formControlName="isYouTube">
+            YouTube</label>
+        <label class="checkbox-inline" style="margin-left: 10px;">
+            <input type="checkbox" id="inlineCheckbox2" value="false"
+                name="isDailymotion" formControlName="isDailymotion">
+            Dailymotion</label>
+    </form>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="profil()">Mon profil 👨🏼‍🔧</button>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="goUpdatePassword()">Update password🔧</button>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="logout()">log out?</button>
+</nav>
