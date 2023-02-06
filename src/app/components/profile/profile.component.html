@@ -1,0 +1,39 @@
+<app-search-navbar></app-search-navbar>
+<div class="container align-self-center ">
+    <form class="p-2 mt-5 shadow rounded-2">
+        <form #f="ngForm" (ngSubmit)="f.form.valid && updateProfile()" name="form" [formGroup]="form">
+            <!-- Username input -->
+            <div class="form-outline mb-4">
+                <label class="form-label mt-2" for="name">Username</label>
+                <input type="name" id="name" class="form-control mt-2" name="name" formControlName="name"
+                    placeholder="Enter a valid username" [(ngModel)]="user.name" />
+
+            </div>
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <label class="form-label mt-2" for="email">Email address</label>
+                <input type="email" id="email" class="form-control mt-2" name="email" formControlName="email"
+                    placeholder="Enter a valid email address" [(ngModel)]="user.email" />
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label mt-2" for="password">Enter your password to confirm</label>
+                <input type="password" class="form-control" id="password" name="password" formControlName="password"
+                    placeholder="Enter your password"
+                    [ngClass]="{ 'is-invalid': (isFormSubmitted && form.controls.password.errors) || (!form.controls.password.pristine && form.controls.password.invalid) }" />
+                <div class="invalid-feedback"
+                    *ngIf="(isFormSubmitted && form.controls.password.errors) || (!form.controls.password.pristine && form.controls.password.invalid)">
+                    <div *ngIf="form.controls.password.errors?.['required']">Password is required</div>
+                </div>
+            </div>
+
+            <div class="col-md-12 text-center">
+                <button type="button" id="submit" name="submit" (click)="cancel()"
+                    class="btn btn-secondary">Cancel</button>
+                <button type="button" id="submit" name="submit" (click)="updateProfile()"
+                    class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </form>
+</div>
