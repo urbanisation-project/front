@@ -1,0 +1,54 @@
+<app-navbar-ad></app-navbar-ad>
+<div class="container align-self-center">
+    <form class="p-2 mt-5 shadow rounded-2" style="width: 70%;">
+        <form #f="ngForm" (ngSubmit)="f.form.valid && updateCampaign()" name="form" [formGroup]="form"
+            class="row g-3 needs-validation"> <!-- Campagne name input -->
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Nom de la campagne: </div>
+                </div>
+                <input type="text" class="form-control" id="Name" name="name" formControlName="name"
+                    placeholder="Enter a le nom de la campagne" [(ngModel)]="campaign.name">
+            </div>
+
+            <!-- Campagne objectif input -->
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Objectif de la campagne: </div>
+                </div>
+                <input type="text" class="form-control" id="Objectif" name="objective" formControlName="objective"
+                    placeholder="Enter a l'objectif de la campagne" [(ngModel)]="campaign.objective">
+            </div>
+
+            <!-- Dailybudget input -->
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Budget de la campagne: </div>
+                </div>
+                <input type="number" class="form-control" id="Dailybudget" name="budget" formControlName="budget"
+                    placeholder="Enter a le budget de la campagne" [(ngModel)]="campaign.budget">
+            </div>
+
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Enter your password to confirm</div>
+                </div>
+                <input type="password" class="form-control" id="password" name="password" formControlName="password"
+                    placeholder="Enter your password"
+                    [ngClass]="{ 'is-invalid': (isFormSubmitted && form.controls.password.errors) || (!form.controls.password.pristine && form.controls.password.invalid) }" />
+                <div class="invalid-feedback"
+                    *ngIf="(isFormSubmitted && form.controls.password.errors) || (!form.controls.password.pristine && form.controls.password.invalid)">
+                    <div *ngIf="form.controls.password.errors?.['required']">Password is required</div>
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <div class="col-md-12 text-center">
+                <button type="button" id="submit" name="submit" (click)="cancel()"
+                    class="btn btn-secondary">Cancel</button>
+                <button type="button" id="submit" name="submit" (click)="updateCampaign()"
+                    class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </form>
+</div>
