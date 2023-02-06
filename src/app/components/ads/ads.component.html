@@ -1,0 +1,28 @@
+<app-navbar-ad></app-navbar-ad>
+<div class="d-flex align-items-center justify-content-center">
+    <form class="p-2 mt-5 shadow rounded-2" style="width: 100%;">
+        <div class="col-md-12 text-center">
+            <img class="mb-3" src="../../../assets/d annonceur.png " width="150" height="150" alt="">
+        </div>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="goCreateAd()">Ajouter une Ad +</button>
+        <div>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nom Ad</th>
+                    <th scope="col"> </th>
+                    <th scope="col"> </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let ad of ads">
+                    <td>{{ad.name}}</td>
+                    <td> {{ad.visitorsCount}}</td>
+                    <td> <button (click)="view(ad)">view</button> </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+
+    </form>
+</div>
