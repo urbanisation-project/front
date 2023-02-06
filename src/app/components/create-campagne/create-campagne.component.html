@@ -1,0 +1,37 @@
+<app-navbar-ad></app-navbar-ad>
+<div class="d-flex align-items-center justify-content-center pt-10">
+    <form class="p-2 mt-5 shadow rounded-2" style="width: 70%;">
+        <div class="col-md-12 text-center">
+            <img class="mb-3" src="../../../assets/d annonceur.png" width="150" height="150" alt="">
+        </div>
+        <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()" name="form" [formGroup]="form" class="row g-3 needs-validation">        <!-- Campagne name input -->
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                <div class="input-group-text">Nom de la campagne: </div>
+                </div>
+                <input type="text" class="form-control" id="Name" name="name" formControlName="name" placeholder="Enter a le nom de la campagne">
+            </div>
+
+            <!-- Campagne objectif input -->
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                <div class="input-group-text">Objectif de la campagne: </div>
+                </div>
+                <input type="text" class="form-control" id="Objectif" name="objective" formControlName="objective" placeholder="Enter a l'objectif de la campagne">
+            </div>
+
+            <!-- Dailybudget input -->
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                <div class="input-group-text">Budget de la campagne: </div>
+                </div>
+                <input type="number" class="form-control" id="Dailybudget"  name="budget" formControlName="budget" placeholder="Enter a le budget de la campagne">
+            </div>
+
+            <!-- Submit button -->
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary btn-block mb-4">+ Ajouter la campagne</button>
+            </div>
+        </form>    
+    </form>
+</div>
