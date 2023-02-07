@@ -28,8 +28,4 @@ export class SignUpAdvertiserComponent implements OnInit{
       this.router.navigate(['/advertiser-login']);
     });
   }
-
-  gotoAdvertiserLogin(){
-    this.router.navigate(['/advertiser-login']);
-  }
 }

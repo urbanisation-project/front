@@ -1,49 +1,32 @@
-<nav class="navbar navbar-light bg-light justify-content-between px-5">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Mes playlist ⏯</button>
-    <input type="text" class="rounded" placeholder="search">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-    <label class="form-check-label" for="inlineCheckbox1">Youtube</label>
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-    <label class="form-check-label" for="inlineCheckbox2">Dailymotion</label>
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Mon profil 👨🏼‍🔧</button>
-</nav>
+<app-search-navbar></app-search-navbar>
 
 <div class="container mt-3">
     <div class="row">
         <!-- Main video -->
         <div class="col-sm-8">
-            <iframe width="700" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <h4> Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs </h4>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, et quaerat enim maxime consequatur, officia quisquam voluptatum ex natus culpa temporibus. Esse exercitationem dignissimos inventore error dolorum amet sint a?</p>
-
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">+ add to playlist </button>
-
+            <iframe width="800" height="400" [src]='convertLink(video)' title={{video.title}} frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            <h4> {{video.title}}</h4>
+            <form>
+               
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="addToPlaylist(video)">+ add to playlist </button>
+            </form>
+            <div>
+                <app-ad-show></app-ad-show>
+            </div>
         </div>
-
         <!-- other videos -->
         <div class="col-sm-4">
-            <div class="col-sm-8 my-3">
-                <iframe height="200" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">+ add to playlist </button>
-            </div>
-            
-            <div class="col-sm-8 my-3">
-                <iframe height="200" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">+ add to playlist </button>
-            </div>
+            <div *ngFor="let video of videos" class="col-sm-8 my-3">
+                <div (click)='goWatchVideo(video)'>
 
-            <div class="col-sm-8 my-3">
-                <iframe height="200" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">+ add to playlist </button>
-            </div>
-            <div class="col-sm-8 my-3">
-                <iframe height="200" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">+ add to playlist </button>
-            </div>
-
-            <div class="col-sm-8 my-3">
-                <iframe height="200" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">+ add to playlist </button>
+                    <iframe  width="400" height="200" [src]='convertLink(video)' title={{video.title}} frameborder="0"
+                        style="overflow: hidden; pointer-events: none;"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
         </div>
     </div>

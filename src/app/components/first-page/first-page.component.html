@@ -1,29 +1,48 @@
+<nav class="navbar navbar-light bg-light justify-content-between px-5">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="redirectTochoose()">Choose</button>
+</nav>
 <div class="d-flex align-items-center justify-content-center pt-10">
 <form class="p-2 mt-5 shadow rounded-2">
-    <div class="col-md-12 text-center">
-        <img class="mb-3" src="https://img.freepik.com/free-vector/branding-identity-corporate-vector-logo-design_460848-8717.jpg?w=900&t=st=1672243522~exp=1672244122~hmac=e8a93e5a9de915c9ac8c7db9f9d940204fc529019dc21d5de134a2faafa8c395" width="150" height="150" alt="">
-    </div>
+  <div class="col-md-12 text-center">
+      <img class="mb-3" src="../../../assets/d.png" width="150" height="150" alt="">
+  </div>
+
+  <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()" name="form" [formGroup]="form" class="row g-3 needs-validation">
     <!-- Email input -->
     <div class="form-outline mb-4">
-      <input type="email" id="email" class="form-control mt-2" placeholder="Enter a valid email address"/>
-      <label class="form-label mt-2" for="email">Email address</label>
+      <label class="form-label mt-2" for="mail">Email address</label>
+      <input type="email" id="mail" class="form-control mt-2" placeholder="Enter a valid email address" name="mail" formControlName="mail"
+             [ngClass]="{ 'is-invalid': (isFormSubmitted && form.controls.mail.errors) || (!form.controls.mail.pristine && form.controls.mail.invalid) }" />
+
+        <div class="invalid-feedback"
+             *ngIf="(isFormSubmitted && form.controls.mail.errors) || (!form.controls.mail.pristine && form.controls.mail.invalid)">
+            <div *ngIf="form.controls.mail.errors?.['required']">Email is required</div>
+            <div *ngIf="form.controls.mail.errors?.['pattern']">Enter valid email</div>
+        </div>
     </div>
-  
+ 
     <!-- Password input -->
     <div class="form-outline mb-4">
-      <input type="password" id="password" class="form-control mt-2" placeholder="Enter password" />
       <label class="form-label mt-2" for="password">Password</label>
+      <input type="password" id="password" class="form-control mt-2" placeholder="Enter password" name="password" formControlName="password"
+             [ngClass]="{ 'is-invalid': (isFormSubmitted && form.controls.password.errors) || (!form.controls.password.pristine && form.controls.password.invalid) }" />
+
+        <div class="invalid-feedback"
+             *ngIf="(isFormSubmitted && form.controls.password.errors) || (!form.controls.password.pristine && form.controls.password.invalid)">
+            <div *ngIf="form.controls.password.errors?.['required']">Password is required</div>
+            <div *ngIf="form.controls.password.errors?.['minlength']">Minimum 8 characters required</div>
+        </div>
     </div>
-  
     <!-- 2 column grid layout for inline styling -->
-  
+ 
     <!-- Submit button -->
     <div class="col-md-12 text-center">
-        <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+        <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
     </div>
     <!-- Register buttons -->
     <div class="text-center">
-      <p>Not a member? <a href="#!">Register</a></p>
+      <p>Not a member? <span  (click)="gotoRegister()" style="color: lightskyblue;">Register</span></p>
     </div>
+  </form>  
 </form>
 </div>

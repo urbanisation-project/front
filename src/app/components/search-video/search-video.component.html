@@ -4,19 +4,32 @@
     <form class="p-2 mt-5 shadow rounded-2">
 
         <div class="col-md-12 text-center">
-            <img class="mb-3" src="https://img.freepik.com/free-vector/branding-identity-corporate-vector-logo-design_460848-8717.jpg?w=900&t=st=1672243522~exp=1672244122~hmac=e8a93e5a9de915c9ac8c7db9f9d940204fc529019dc21d5de134a2faafa8c395" width="150" height="150" alt="">
+            <img class="mb-3" src="../../../assets/d.png" width="150" height="150" alt="">
         </div>
+        <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()" name="form" [formGroup]="form">
+            <div class="input-group rounded">
+                <input type="search" class="form-control rounded" name="query" formControlName="query"
+                    placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                <span class="input-group-text border-0" id="search-addon">
+                    <button type="submit" class="btn btn-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
+                            </path>
+                        </svg>
+                    </button>
+                </span>
+            </div>
+            <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox1" value="true" name="isYouTube" formControlName="isYouTube">
+                YouTube</label>
+            <label class="checkbox-inline" style="margin-left: 10px;">
+                <input type="checkbox" id="inlineCheckbox2" value="false" name="isDailymotion"
+                    formControlName="isDailymotion">
+                Dailymotion</label>
 
-        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-        
-        <div class="d-flex justify-content-center pt-3">
-            <button type="button" class="btn btn-outline-primary d-flex justify-content-center pt-10">search</button>
-        </div>
 
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-        <label class="form-check-label" for="inlineCheckbox1">Youtube</label>
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-        <label class="form-check-label" for="inlineCheckbox2">Dailymotion</label>
-
+        </form>
     </form>
 </div>

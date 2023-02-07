@@ -1,69 +1,38 @@
-<nav class="navbar navbar-light bg-light justify-content-between px-5">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Mes playlist ⏯</button>
-    <input type="text" class="rounded" placeholder="search">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-    <label class="form-check-label" for="inlineCheckbox1">Youtube</label>
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-    <label class="form-check-label" for="inlineCheckbox2">Dailymotion</label>
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Mon profil 👨🏼‍🔧</button>
-</nav>
+<app-search-navbar></app-search-navbar>
+
 <div class="table-wrapper-scroll-x my-custom-scrollbar">
 
-    <table class="table table-bordered table-striped mb-0">
-      <tbody>
-        <tr>
+  <table class="table table-bordered table-striped mb-0">
+    <tbody>
+      <tr>
 
-            <th scope="row">Youtube</th>
-            <th> <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </th>
-            <th> <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </th>
-            <th> <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </th>
-            <th> <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </th>
-            <th> <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </th>
-            <th> <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </th>
-
-        </tr>
-        <tr>
-          <th scope="row">Dailymotion</th>
-          <th> <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </th>
-          <th> <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </th>
-          <th> <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </th>
-          <th> <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </th>
-          <th> <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </th>
-          <th> <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </th>
-
-
-        </tr>
-      </tbody>
-    </table>
+        <!-- <th scope="row">Youtube</th> -->
+        <th *ngFor="let video of youtubeVideos">
+          <div (click)='goWatchVideo(video,youtubeVideos)'>   
+            <iframe width="480" height="320" [src]='convertLink(video)' title={{video.title}} frameborder="0"
+            style="overflow: hidden; pointer-events: none;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+            allowfullscreen>
+          </iframe>
+        </div>
+        </th>
+      </tr>
+      <tr>
+        <!-- <th scope="row">Dailymotion</th> -->
+        <th *ngFor="let video of dailymotionVideos">
+          <div>
+            <div (click)='goWatchVideo(video,dailymotionVideos)'>
+              <iframe  width="480" height="320" [src]='convertLink(video)' title={{video.title}}
+              allowfullscreen scrolling="no"
+              style="overflow: hidden; pointer-events: none;"
+              allow="encrypted-media;">
+            </iframe>
+          </div>
+          </div>
+        
+        </th>
+      </tr>
+    </tbody>
+  </table>
 
 </div>
-
-<div class="container">
-    <div class="row">
-      <div class="col">
-        <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="col">
-        <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="col">
-        <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="col">
-        <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="w-100"></div>
-      <div class="col">
-        <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="col">
-        <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="col">
-        <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="col">
-        <iframe width="480" height="320" src="https://www.youtube.com/embed/33Xe3z8L73A" title="Late Night ♫ Acoustic Love Songs 2022 🍃 Chill Music cover of popular songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
