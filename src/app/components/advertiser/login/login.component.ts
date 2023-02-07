@@ -34,4 +34,8 @@ export class LoginComponent implements OnInit {
   redirectTochoose(){
     this.router.navigate(['/choose'])
   }
+
+  gotoAdvertiserRegister(){
+    this.router.navigate(['/advertiser-register'])
+  }
 }
