@@ -6,7 +6,7 @@
       <div class="col-md-12 text-center">
           <img class="mb-3" src="../../../../assets/d annonceur.png" width="200" height="200" alt="">
       </div>
-  
+ 
       <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()" name="form" [formGroup]="form" class="row g-3 needs-validation">
         <!-- Email input -->
         <div class="form-outline mb-4">
@@ -20,7 +20,7 @@
                 <div *ngIf="form.controls.mail.errors?.['pattern']">Enter valid email</div>
             </div>
         </div>
-      
+     
         <!-- Password input -->
         <div class="form-outline mb-4">
           <label class="form-label mt-2" for="password">Password</label>
@@ -34,14 +34,14 @@
             </div>
         </div>
         <!-- 2 column grid layout for inline styling -->
-      
+     
         <!-- Submit button -->
         <div class="col-md-12 text-center">
             <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
         </div>
         <!-- Register buttons -->
         <div class="text-center">
-          <p>Not a member? <a href="/advertiser-register">Register</a></p>
+          <p>Not a member? <span style="color: lightskyblue" (click)="gotoAdvertiserRegister()">Register</span></p>
         </div>
       </form>  
   </form>
